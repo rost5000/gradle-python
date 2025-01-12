@@ -10,10 +10,11 @@ base_file_path = os.path.abspath(base_file)
 
 repo = Repo('../../../')
 start_date = datetime.datetime.now(datetime.UTC)
-lambda_exp = 20
+lambda_exp = 10
 
 def exp_dist(value):
-    return lambda_exp * math.exp(value)
+    res = lambda_exp * math.exp(value)
+    return 24 if res > 24 else res
 
 end_date = datetime.datetime.now(datetime.UTC) - datetime.timedelta(days=5)
 delta = datetime.timedelta(days=1)
