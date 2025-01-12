@@ -1,0 +1,13 @@
+[versions]
+junit = "5.10.0"
+graalvm-python = "24.1.1"
+graalvm-native = "0.10.4"
+
+[libraries]
+graalvm-polyglot-polyglot = {module = "org.graalvm.polyglot:polyglot", version.ref = "graalvm-python"}
+graalvm-polyglot-python = {module = "org.graalvm.polyglot:python", version.ref = "graalvm-python"}
+junit-bom = {module = "org.junit:junit-bom", version.ref = "junit"}
+
+[plugins]
+graalvm-python = {id = "org.graalvm.python", version.ref = "graalvm-python"}
+graalvm-native= {id = "org.graalvm.buildtools.native", version.ref = "graalvm-native"}

@@ -1,0 +1,56 @@
+plugins {
+    id "application"
+    alias libs.plugins.graalvm.python
+    alias libs.plugins.graalvm.native
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+jar{
+    manifest {
+        attributes["Main-Class"] = "org.example.Main"
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = "org.example.Main"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+dependencies {
+    implementation libs.graalvm.polyglot.polyglot
+    implementation libs.graalvm.polyglot.python
+    testImplementation platform(libs.junit.bom)
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs += "src/main/python"
+        }
+    }
+}
+
+graalPy {
+    packages = [
+            "termcolor==2.2",
+            "GitPython==3.1.44"
+    ]
+}
+
+
+test {
+    useJUnitPlatform()
+}
