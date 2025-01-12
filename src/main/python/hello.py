@@ -28,5 +28,5 @@ while start_date >= end_date:
             f.write(start_date.__str__())
         index.add([base_file_path])
         index.commit("A commit message", commit_date=date_tmp, author_date=date_tmp)
-        date_tmp += datetime.timedelta(hours=exp_dist(random.random()))
+        date_tmp -= datetime.timedelta(hours=exp_dist(random.random()))
     start_date = next_date
